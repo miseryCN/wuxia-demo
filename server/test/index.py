@@ -15,5 +15,3 @@ for i in range(0,100):
 
     player.get_all()
     players.append(player)
-
-print(players)

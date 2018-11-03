@@ -25,15 +25,10 @@
     8⃣ 会心抗性：抗暴击率，是一个百分比，可以超过100%
     9⃣ 会心伤害：暴击伤害。暴击数值 = 伤害 * 会心伤害。 是一个百分比，初始值为150%
 """
-
-
-
 import uuid
 import random
 import server.constants as constants
 from server.equipment import Equipment
-
-
 
 
 class Player():
@@ -68,13 +63,16 @@ class Player():
         self.body = []  # 身上穿着
 
     def choose_occupation(self, occupation):
+        # 设置职业
         self.occupation = occupation
         print(self.name + '选择职业:' + constants.occupations[occupation])
 
-    def set_name(self,name):
+    def set_name(self, name):
+        # 设置名字
         self.name = name
 
     def level_up(self):
+        # 升1级
         old_level = self.level
         self.level += 1
         print(self.name, '升级啦! ', old_level, '-->', self.level)
@@ -86,6 +84,7 @@ class Player():
             advance[key] += 1
 
     def get_all(self):
+        # 这是个打印玩家信息的方法
         print('玩家所有信息:')
         print('id:'+self.id)
         print('level:'+str(self.level))
@@ -102,9 +101,11 @@ class Player():
         print('\n')
 
     def add_item(self, item):
+        # 添加道具
         self.bag.append(item)
 
     def remove_item(self, id):
+        # 删除道具
         for item,index in self.bag:
             if item["id"] == id:
                 self.bag.pop(index)
