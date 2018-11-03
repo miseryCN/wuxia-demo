@@ -41,6 +41,7 @@ class Player():
         self.id = str(uuid.uuid1())  # 玩家每个人对应一个不同的id
         self.name = ""  # 玩家昵称.由set_name来定义
         self.level = 1  # 玩家默认等级
+        self.HP = 0  # 血量
         self.exp = 0  # 玩家经验
         self.attribute = {
             "base": {
