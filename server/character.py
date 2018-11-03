@@ -31,6 +31,7 @@
 import uuid
 import random
 import server.constants as constants
+from server.equipment import Equipment
 
 
 
@@ -62,6 +63,8 @@ class Player():
             }
         },
         self.occupation = 0  # 职业
+        self.bag = []  # 背包
+        self.body = []  # 身上穿着
 
     def choose_occupation(self, occupation):
         self.occupation = occupation
@@ -73,8 +76,13 @@ class Player():
     def level_up(self):
         old_level = self.level
         self.level += 1
-
-        print(self.name, '升级啦! ', old_level,'-->', self.level)
+        print(self.name, '升级啦! ', old_level, '-->', self.level)
+        base = self.attribute[0]["base"]
+        advance = self.attribute[0]["advance"]
+        for key in base:
+            base[key] += 1
+        for key in advance:
+            advance[key] += 1
 
     def get_all(self):
         print('玩家所有信息:')
@@ -82,11 +90,21 @@ class Player():
         print('level:'+str(self.level))
         print('name:'+self.name)
         print('职业:'+str(self.occupation))
+        advance = self.attribute[0]["advance"]
+        advance_constants = constants.attribute["advance"]
+        for key in advance_constants:
+            print(advance_constants[key], ':', advance[key])
+        base = self.attribute[0]["base"]
+        base_constants = constants.attribute["base"]
+        for key in base_constants:
+            print(base_constants[key], ':', base[key])
         print('\n')
 
+    def add_item(self, item):
+        self.bag.append(item)
 
-player = Player()
-player.set_name('wsp')
-player.level_up()
-player.choose_occupation(0)
-player.get_all()
+    def remove_item(self, id):
+        for item,index in self.bag:
+            if item["id"] == id:
+                self.bag.pop(index)
+                break
