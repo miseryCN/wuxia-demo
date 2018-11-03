@@ -9,7 +9,7 @@ def allRandomColor(poem):
         if poem.index(verse) == 0:
            color = randint(30,38)
            style = '\033[5;' + str(color) + ';0m'
-           newVerse = style + verse
+           newVerse = style +'《'+ verse +'》'
         else:
             sleep(uniform(1.5,2))
             for v in verse:
@@ -43,7 +43,7 @@ def randomColor(poem):
         if verse == poem[0]:
             color = randint(30, 38)
             style = '\033[5;' + str(color) + ';0m'
-            newVerse = style + verse
+            newVerse = style +'《'+ verse + '》'
         else:
             for v,c in zip(verse,lineColor):
                 style = '\033[5;' + str(c) + ';0m'
@@ -55,6 +55,6 @@ def randomColor(poem):
 
 if __name__ == '__main__':
     poem = poems.xiaKeXin
-    #allRandomColor(poem)
-    randomColor(poem)
+    allRandomColor(poem)
+    #randomColor(poem)
 
