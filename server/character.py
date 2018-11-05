@@ -110,3 +110,10 @@ class Player():
             if item["id"] == id:
                 self.bag.pop(index)
                 break
+
+    def attack(self, attack_info, enemy_type, enemy):
+        # 发起攻击.传入[攻击对象,敌人类型,敌人实例]
+        attack_type = attack_info['type']
+        attack_number = attack_info['number']
+        # 拿到攻击方式和类型,对自己的装备属性进行计算,然后对敌人的装备属性计算
+        # 在敌人身上扣除对应的血量,并返回一个伤害值
